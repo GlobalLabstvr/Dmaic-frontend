@@ -1,0 +1,17 @@
+mat-form-field {
+    width: 100%;
+  }
+  
+  mat-card{
+    padding-left: 30px; 
+    width:700px;
+   }
+   matPrefix {
+     margin-right:8px;
+   }
+   mat-label {
+     font-size:20px;
+      margin-bottom: 15px;
+   }
+  
+  

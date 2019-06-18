@@ -1,0 +1,16 @@
+  <!---<textarea name="control" 
+placeholder="control" 
+rows="6" 
+cols="100" 
+style="font-size:15px;"
+[(ngModel)] = "dmaic.control"
+>
+{{dmaic.control}}
+</textarea>-->
+<mat-card>
+    <textarea name="implementation" placeholder="implementation" rows="6" cols="21" [(ngModel)]="dmaic.implementation"
+    style="font-size:15px;">{{dmaic.implementation}}</textarea> &nbsp;&nbsp;&nbsp;&nbsp;
+
+    <textarea name="control" placeholder="control" rows="6" cols="21" [(ngModel)]="dmaic.control"
+        style="font-size:15px;">{{dmaic.control}}</textarea>
+</mat-card>
