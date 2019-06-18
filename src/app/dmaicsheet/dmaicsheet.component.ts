@@ -43,11 +43,10 @@ export class DmaicSheetComponent implements OnInit {
 
   save(){
     console.log('dmaic:'+JSON.stringify(this.dmaic));
-    console.log('user:'+JSON.stringify(this.users));
+    
     this.dmaicsheetService.save(this.dmaic)
     .subscribe(data => {
       this.dmaic = data;
-      this.users.push();
       console.log('saved:'+JSON.stringify(data));
     });
   }
