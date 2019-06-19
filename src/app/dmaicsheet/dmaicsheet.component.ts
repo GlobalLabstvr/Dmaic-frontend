@@ -45,9 +45,7 @@ export class DmaicSheetComponent implements OnInit {
     this.dmaicsheetService.save(this.dmaic)
     .subscribe(data => {
       this.dmaic = data;
-      //this.authService.setResult(this.users);
       console.log('saved:'+JSON.stringify(data));
-      console.log('saved:'+JSON.stringify(this.users));
     });
   }
    

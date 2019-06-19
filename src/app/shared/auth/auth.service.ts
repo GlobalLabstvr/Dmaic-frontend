@@ -41,13 +41,7 @@ setResult(result: User[]){
   this.users = result;
 }
 
-  //createUser(user:User) {
-   //const authData: AuthData = { firstname:firstname,lastname:lastname,phonenumber:phonenumber,email:email, password:password};
-  // return this.http.post("http://localhost:3000/api/users/signup", user);
-      
- // }
  createUser(user:User) {
- // const authData: AuthData = {firstName:firstName,lastname:lastName,phoneNumber:phoneNumber, email: email, password: password };
   this.http
     .post("http://localhost:3000/api/user/signup", user)
     .subscribe(() => {
@@ -65,8 +59,8 @@ setResult(result: User[]){
      })
          .pipe(map(result => {
            if(result && result.token){
-            console.log('saved:'+JSON.stringify(result));
-            }
+             localStorage.setItem('currentUser', JSON.stringify(result));
+             }
            return result;
          }));
 
