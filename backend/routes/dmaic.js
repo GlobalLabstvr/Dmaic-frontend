@@ -10,6 +10,7 @@ router.post("", (req, res, next) => {
   console.log('body:'+JSON.stringify(req.body));
   dmaic.save().then(createdDmaic => {
     res.status(201).json(createdDmaic);
+    
   });
 });
 

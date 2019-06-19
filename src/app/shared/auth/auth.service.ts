@@ -1,18 +1,16 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { AuthData } from '../../shared/auth/auth-data';
-import { Login} from '../../shared/model/login-data';
+
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { User } from '../model/user.model';
-import { map } from 'rxjs/operators';
-import { UserListComponent } from 'src/app/user-list/user-list.component';
+
 
 
 
 @Injectable({ providedIn: "root" })
 export class AuthService {
-  userobj : User[];
+
   private isAuthenticated = false;
   private token: string;
   public  users:User[]=[];
@@ -52,19 +50,18 @@ setResult(result: User[]){
   this.http
     .post("http://localhost:3000/api/user/signup", user)
     .subscribe(() => {
-      this.router.navigate(["/"]);
+      this.router.navigate(["/login"]);
     }, error => {
       this.authStatusListener.next(false);
     });
 }
 
-  login(email: string, password: string) {
-   const login: Login = {email: email, password: password};
-   this.http.post<{token: string}>("http://localhost:3000/api/user/login", login)
+  login(user:User) {
+   
+   this.http.post<{token: string}>("http://localhost:3000/api/user/login", user)
         .subscribe(response => {
       const token = response.token;
        this.token = token;
-       this.userobj = this.users;
        if (token) {
         this.isAuthenticated = true;
         this.authStatusListener.next(true);

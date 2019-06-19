@@ -15,7 +15,7 @@ import { AuthService } from '../shared/auth/auth.service';
 
 export class DmaicSheetComponent implements OnInit {
   public dmaic: Dmaic = {
-    userId: '',
+    users : {email: 'banu@gmail.com'},
     define: 'define',
     measure: {current:10, target:100},
     analyse: 'analyse',
@@ -43,11 +43,14 @@ export class DmaicSheetComponent implements OnInit {
 
   save(){
     console.log('dmaic:'+JSON.stringify(this.dmaic));
-    
+    console.log('userdata:'+JSON.stringify(this.users));
     this.dmaicsheetService.save(this.dmaic)
     .subscribe(data => {
       this.dmaic = data;
+      this.authService.setResult(this.users);
+
       console.log('saved:'+JSON.stringify(data));
+      console.log('saved:'+JSON.stringify(this.users));
     });
   }
    

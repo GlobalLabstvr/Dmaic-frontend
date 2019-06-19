@@ -11,7 +11,7 @@
        
       </div>
       <div class="row" *ngFor = "let dmaic of dmaics; let i=index" style="background-color: white">
-        <div class = "col-sm-2">{{user.email}}</div> 
+        <div class = "col-sm-2">{{dmaic.users.email}}</div> 
         <div class = "col-sm-2" [routerLink]="['dmaicsheet',i]">{{dmaic.define}}</div>
         <div class = "col-sm-2">{{dmaic.measure.current}}-{{dmaic.measure.target}}</div>
         <div class = "col-sm-2">{{dmaic.analyse}}</div>

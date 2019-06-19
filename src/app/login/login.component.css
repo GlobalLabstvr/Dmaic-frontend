@@ -5,6 +5,7 @@ mat-form-field {
   mat-card{
     padding-left: 30px; 
     width:700px;
+    margin-top: 10%;
    }
    matPrefix {
      margin-right:8px;

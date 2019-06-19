@@ -3,7 +3,24 @@
         </tr></table>
 
 
-<form (submit)="onLogin(loginForm)" #loginForm="ngForm">
+
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+
+      <mat-form-field>
+        <input type="text" formControlName="email"  matInput placeholder="Email">
+        
+    
+      </mat-form-field> 
+    
+      <mat-form-field>
+        <input type="text" formControlName="password"  matInput placeholder="Password" [type]="hide ? 'password':'text'" />
+        <mat-icon matSuffix (click)="hide = !hide">
+          {{hide ? 'visibility' : 'visibility_off'}}
+        </mat-icon>
+       
+      </mat-form-field>
+
+      <!--
 
   <mat-form-field>
     
@@ -21,10 +38,11 @@
     </mat-icon>
     <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
   </mat-form-field><br>
+-->
 
 
   <mat-card-actions>
-  <button mat-raised-button color="accent" routerLink="/dmaic"type="submit">Login</button>
+  <button mat-raised-button color="accent"type="submit">Login</button>
   <p>
     <span class=" "><b>No account?</b>
       <button mat-button routerLink="/sign-up" class="divider">Createone</button></span></p>

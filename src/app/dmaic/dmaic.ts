@@ -1,7 +1,7 @@
 import { User } from '../shared/model/user.model';
 
 export interface Dmaic{
-    userId: string,
+    users: {email: string},
     define: string,
     measure: {current: number, target: number},
     analyse: string,
