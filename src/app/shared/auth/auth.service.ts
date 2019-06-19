@@ -4,7 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { User } from '../model/user.model';
-
+import { map} from 'rxjs/operators';
 
 
 
@@ -15,7 +15,8 @@ export class AuthService {
   private token: string;
   public  users:User[]=[];
   private authStatusListener = new Subject<boolean>();
-  private userUpdated = new Subject<User[]>();
+ 
+ 
   constructor(private http: HttpClient,private router: Router) {}
 
 
@@ -56,17 +57,21 @@ setResult(result: User[]){
     });
 }
 
-  login(user:User) {
+  
+  login(email:string,password:string) {
    
-   this.http.post<{token: string}>("http://localhost:3000/api/user/login", user)
-        .subscribe(response => {
-      const token = response.token;
-       this.token = token;
-       if (token) {
-        this.isAuthenticated = true;
-        this.authStatusListener.next(true);
-        this.router.navigate(['/dmaic']);
-      }
-  })
-  }
+     return this.http.post<{token: string}>("http://localhost:3000/api/user/login",{
+       email:email,password:password
+     })
+         .pipe(map(result => {
+           if(result && result.token){
+            console.log('saved:'+JSON.stringify(result));
+            }
+           return result;
+         }));
+
+          
+       }
+  
+   
 }

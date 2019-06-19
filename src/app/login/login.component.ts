@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../shared/auth/auth.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { first } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-login',
@@ -10,24 +12,41 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit{
   
-  
-   constructor(public authService: AuthService, private router:Router) {}
-   loginForm = new FormGroup({
-     email: new FormControl(null,[Validators.required,Validators.email]),
+  submitted = false;
+   constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute) {}
+   
+    loginForm = new FormGroup({
+    email: new FormControl(null,[Validators.required]),
     password: new FormControl(''),
-   })
+  });
+   
+   ngOnInit(){
+    
+  }
+
+  get f() { 
+    return this.loginForm.controls; 
+  }
 
   onLogin() {
+    this.submitted = true;
     if (this.loginForm.invalid) {
      return;
   }
-    this.authService.login(this.loginForm.value);
+    this.authService.login(this.f.email.value, this.f.password.value)
+    .pipe(first())
+    .subscribe(
+      result=> {
+        console.log(result);
+        this.router.navigate(['/dmaic']);
+      }
+      
+      
+    );
     
  }
 
- ngOnInit(){
-   
- }
+ 
  
  }
 

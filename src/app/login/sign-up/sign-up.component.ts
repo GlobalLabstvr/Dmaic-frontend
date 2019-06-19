@@ -15,7 +15,7 @@ export class SignUpComponent implements OnInit, OnDestroy{
   signupForm = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
-    email: new FormControl(null,[Validators.required,Validators.email],this.forbiddenEmails),
+    email: new FormControl(null,[Validators.required,Validators.email]),
     password: new FormControl(''),
     phoneNumber: new FormControl('')
   });
@@ -41,20 +41,5 @@ ngOnInit() {
   ngOnDestroy() {
     this.authStatusSub.unsubscribe();
   }
-  forbiddenEmails(control:FormControl):Promise<any> | Observable<any>{
-    const promise =new Promise<any>((resolve ,reject)=>{
-      setTimeout(()=>{
-        if(control.value === 'test@gmail.com'){
-          resolve({'emailIsForbidden':true});
-        }else{
-          resolve(null);
-
-        }
-          
-        },1500);
-
-      });
-      
-  return promise;
-  }
+  
 }

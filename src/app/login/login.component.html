@@ -1,26 +1,44 @@
-<mat-card>
-  <table> <tr><mat-label><b>LOGIN</b></mat-label>
+<h2><b>LOGIN</b></h2>
+
+<form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <div class ="form-group">
+          <label for="email">Email</label>
+        <input type="text" formControlName="email"  placeholder="Email" class="form-control"
+         [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+        </div>
+
+        </div>
+      
+    
+        <div class="form-group">
+        <label for="password">Password</label>
+        <input type="text" formControlName="password" placeholder="Password" class="form-control" 
+        [ngClass]="{ 'is-invalid': submitted && f.password.errors }" [type]="hide ? 'password':'text'"/>
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+        </div>
+        </div>
+       
+        <div class = "form-group">
+            <button mat-raised-button color="accent"type="submit">Login</button>
+            <p>
+              <span class=" "><b>No account?</b>
+                <button mat-button routerLink="/sign-up" class="divider">Createone</button></span></p>
+              </div>
+               
+            </form>
+          
+
+      <!--
+        <table> <tr><mat-label><b>LOGIN</b></mat-label>
         </tr></table>
 
-
-
-    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-
-      <mat-form-field>
-        <input type="text" formControlName="email"  matInput placeholder="Email">
-        
-    
-      </mat-form-field> 
-    
-      <mat-form-field>
-        <input type="text" formControlName="password"  matInput placeholder="Password" [type]="hide ? 'password':'text'" />
-        <mat-icon matSuffix (click)="hide = !hide">
+         <mat-icon matSuffix (click)="hide = !hide">
           {{hide ? 'visibility' : 'visibility_off'}}
         </mat-icon>
        
-      </mat-form-field>
-
-      <!--
 
   <mat-form-field>
     
@@ -41,14 +59,4 @@
 -->
 
 
-  <mat-card-actions>
-  <button mat-raised-button color="accent"type="submit">Login</button>
-  <p>
-    <span class=" "><b>No account?</b>
-      <button mat-button routerLink="/sign-up" class="divider">Createone</button></span></p>
-      </mat-card-actions>
-     
-</form>
-
-</mat-card>
-
+  
