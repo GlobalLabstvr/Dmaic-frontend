@@ -13,7 +13,7 @@ const dmaicRoutes = require("./routes/dmaic");
 
 const app = express();
 
-mongoose.connect("mongodb://localhost:27017/dmaicdb");
+mongoose.connect("mongodb+srv://suji:27fj7WOVuGK8lePW@cluster0-ztto0.mongodb.net/dmaic?retryWrites=true&w=majority")
 mongoose.connection.on("connected",()=>{
     console.log("mongodb connected");
 

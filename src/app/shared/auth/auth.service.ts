@@ -11,6 +11,12 @@ import { map} from 'rxjs/operators';
 @Injectable({ providedIn: "root" })
 export class AuthService {
 
+  //email(): string {
+//return 'working' ;
+ // }
+
+  
+
   private isAuthenticated = false;
   private token: string;
   public  users:User[]=[];
@@ -59,7 +65,7 @@ setResult(result: User[]){
      })
          .pipe(map(result => {
            if(result && result.token){
-             localStorage.setItem('currentUser', JSON.stringify(result));
+             //localStorage.setItem('currentUser', JSON.stringify(result));
              }
            return result;
          }));
@@ -67,5 +73,5 @@ setResult(result: User[]){
           
        }
   
-   
+  
 }

@@ -11,6 +11,13 @@ import { first } from 'rxjs/operators';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit{
+
+  //email: string = 'sujeemithun@gmail.com'
+  //constructor(private authService: AuthService) {}
+
+  //ngOnInit(){
+    //console.log(this.authService.email());
+  //}
   
   submitted = false;
    constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute) {}
