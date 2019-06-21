@@ -15,7 +15,7 @@ import { AuthService } from '../shared/auth/auth.service';
 
 export class DmaicSheetComponent implements OnInit {
   public dmaic: Dmaic = {
-    userId: 'sujee@gmail.com',
+    userId: 'test@gmail.com',
     define: 'define',
     measure: {current:10, target:100},
     analyse: 'analyse',

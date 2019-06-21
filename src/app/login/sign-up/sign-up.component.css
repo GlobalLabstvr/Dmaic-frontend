@@ -8,6 +8,7 @@ mat-form-field {
   mat-card{
     padding-left: 30px; 
     width:700px;
+    margin-top:40px;
    }
    
    mat-radio-group mat-radio-button{

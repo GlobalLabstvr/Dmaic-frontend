@@ -12,7 +12,7 @@ import { User } from '../model/user.model';
 
 export class UserlistService {
   private subject =new Subject<any>();
-  private users: User[];
+  private users: User[]=[];
   constructor(private http: HttpClient,private router: Router) {}
     
 getUsers():Observable<User[]> {
