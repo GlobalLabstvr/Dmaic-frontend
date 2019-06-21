@@ -32,10 +32,10 @@
   </mat-form-field> 
 
   <mat-form-field>
-    <input type="text" formControlName="password"  matInput placeholder="Password" [type]="hide ? 'password':'text'" />
-    <mat-icon matSuffix (click)="hide = !hide">
+    <input type="text" formControlName="password"  matInput placeholder="Password">
+    <!----<mat-icon matSuffix (click)="hide = !hide">
       {{hide ? 'visibility' : 'visibility_off'}}
-    </mat-icon>
+    </mat-icon>--->
     <span  *ngIf="!signupForm.get('password').valid && signupForm.get('password').touched" class="helpblock">This field is required!</span>
 
   </mat-form-field>

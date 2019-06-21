@@ -65,8 +65,16 @@ setResult(result: User[]){
      })
          .pipe(map(result => {
            if(result && result.token){
-             //localStorage.setItem('currentUser', JSON.stringify(result));
+            // this.users =result;
+             localStorage.setItem('currentUser', JSON.stringify(result));
+             JSON.parse(localStorage.getItem('result'));
              }
+            else{
+              localStorage.setItem('result',null);
+              JSON.parse(localStorage.getItem('result'));
+
+            }
+
            return result;
          }));
 
