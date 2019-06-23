@@ -32,16 +32,11 @@ export class DmaicSheetComponent implements OnInit {
       if(selectedIndex!=='new'){
         this.dmaic = this.dmaicsheetService.getDmaic(selectedIndex);
       }
-      this.authService.getUserdata()
-   .subscribe(result => {
-     this.users = result;
-     this.authService.setResult(this.users);
-     });
-      
   }
 
   save(){
     console.log('dmaic:'+JSON.stringify(this.dmaic));
+    this.dmaic.userId = this.authService.getLoginUser().email;
     this.dmaicsheetService.save(this.dmaic)
     .subscribe(data => {
       this.dmaic = data;

@@ -12,14 +12,15 @@ const dmaicRoutes = require("./routes/dmaic");
 
 
 const app = express();
-
-mongoose.connect("mongodb+srv://priyasha:cMvuH0VMZrZEdLyz@cluster0-thfuj.gcp.mongodb.net/dmaicappdb?retryWrites=true&w=majority")
+mongoose.connect('mongodb://localhost:27017/created');
+//mongoose.connect("mongodb+srv://priyasha:cMvuH0VMZrZEdLyz@cluster0-thfuj.gcp.mongodb.net/dmaicappdb?retryWrites=true&w=majority",
+//{useNewUrlParser: true, dbName: 'dmaicappdb'});
 mongoose.connection.on("connected",()=>{
     console.log("mongodb connected");
 
 })
-mongoose.connection.on("error",()=>{
-    console.log("mongodb not connected");
+mongoose.connection.on("error",(err)=>{
+    console.log("mongodb not connected:"+JSON.stringify(err));
 
 })
 

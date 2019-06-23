@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { User } from '../model/user.model';
 import { map} from 'rxjs/operators';
@@ -15,13 +15,13 @@ export class AuthService {
 //return 'working' ;
  // }
 
-  
-
+  private loginUserSubject$:Subject<string> = new Subject<string>();
+          loginUserObservable$:Observable<string> = this.loginUserSubject$.asObservable();
   private isAuthenticated = false;
   private token: string;
   public  users:User[]=[];
   private authStatusListener = new Subject<boolean>();
- 
+  private loginUser:User = null;
  
   constructor(private http: HttpClient,private router: Router) {}
 
@@ -60,14 +60,14 @@ setResult(result: User[]){
   
   login(email:string,password:string) {
    
-     return this.http.post<{token: string}>("http://localhost:3000/api/user/login",{
+     return this.http.post<{token: string, user: User}>("http://localhost:3000/api/user/login",{
        email:email,password:password
      })
          .pipe(map(result => {
-           if(result && result.token){
+           if(result){
             // this.users =result;
-             localStorage.setItem('currentUser', JSON.stringify(result));
-             JSON.parse(localStorage.getItem('result'));
+            console.log('success:'+JSON.stringify(result));
+             this.setLoginUser(result.user);
              }
             else{
               localStorage.setItem('result',null);
@@ -81,5 +81,14 @@ setResult(result: User[]){
           
        }
   
+    setLoginUser(user:User){
+      console.log('setLoginUser:'+JSON.stringify(user));
+      this.loginUser = user;
+      this.loginUserSubject$.next(user.email);
+    }
+
+    getLoginUser(): User {
+      return this.loginUser;
+    }
   
 }

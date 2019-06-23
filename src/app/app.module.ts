@@ -10,6 +10,7 @@ import { LoginModule } from './login/login.module';
 import { UserListModule } from './user-list/user-list.module';
 import { SharedModule } from './shared/shared.module';
 import { DmaicModule } from './dmaic/dmaic.module';
+import { CommonModule } from '@angular/common';  
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DmaicModule } from './dmaic/dmaic.module';
     HttpClientModule,
     LoginModule,
     UserListModule,
-    DmaicModule
+    DmaicModule,
+    CommonModule
      
   ],
   providers: [],

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DmaicService } from './dmaic.service';
 import { HttpClient } from '@angular/common/http';
 import { Dmaic } from './dmaic';
+import { AuthService } from '../shared/auth/auth.service';
 
 @Component({
   selector: 'app-dmaic',
@@ -10,10 +11,14 @@ import { Dmaic } from './dmaic';
 })
 export class DmaicComponent implements OnInit {
   public dmaics:Dmaic[] = [];
-  constructor(private dmaicService: DmaicService,private http:HttpClient) { }
+  constructor(private dmaicService: DmaicService,
+    private authService: AuthService,
+    private http:HttpClient) { }
 
   ngOnInit() {
-    this.dmaicService.getDetails()
+    let loginUser = this.authService.getLoginUser();
+    console.log('loginUser:'+JSON.stringify(loginUser));
+    this.dmaicService.getDetails(loginUser)
     .subscribe(data => {
       this.dmaics = data;
       this.dmaicService.setData(this.dmaics);

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/shared/auth/auth.service';
+import { CommonModule } from '@angular/common';  
 
 @Component({
   selector: 'app-header',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  private loginUser = '';
+  constructor(private authService:AuthService) { }
 
-  constructor() { }
 
   ngOnInit() {
+    this.authService.loginUserObservable$.subscribe(loginUser => this.loginUser= loginUser);
   }
 
 }

@@ -16,6 +16,7 @@ router.post("", (req, res, next) => {
 
 
 router.get("", (req, res, next) => {
+  console.log('coming here');
   Dmaic.find().then(dmaics => {
     res.status(200).json(dmaics);
   });
@@ -23,7 +24,7 @@ router.get("", (req, res, next) => {
 
 
 router.get("/:id", (req, res, next) => {
-  Dmaic.findById(req.params.id).then(dmaic => {
+  Dmaic.find({userId:req.params.id}).then(dmaic => {
     if (dmaic) {
       res.status(200).json(dmaic);
     } else {

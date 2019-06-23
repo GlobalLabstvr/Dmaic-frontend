@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Dmaic } from './dmaic';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { User } from '../shared/model/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +11,11 @@ import { Observable } from 'rxjs';
 export class DmaicService {
 
   constructor(private http: HttpClient, private router: Router) { }
-  public dmaics : Dmaic[];
+  public dmaics : Array<Dmaic> = [];
 
-  getDetails():Observable<Dmaic[]>{
-      return this.http.get<Dmaic[]>('http://localhost:3000/api/dmaic');
+  getDetails(loginUser: User):Observable<Dmaic[]>{
+    console.log('url:'+'http://localhost:3000/api/dmaic/'+loginUser.email);
+      return this.http.get<Dmaic[]>('http://localhost:3000/api/dmaic/'+loginUser.email);
   }
 
     save(dmaic: Dmaic):Observable<Dmaic>{

@@ -10,26 +10,17 @@ import { first } from 'rxjs/operators';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent {
 
-  //email: string = 'sujeemithun@gmail.com'
-  //constructor(private authService: AuthService) {}
-
-  //ngOnInit(){
-    //console.log(this.authService.email());
-  //}
-  
   submitted = false;
-   constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute) {}
-   
-    loginForm = new FormGroup({
-    email: new FormControl(null,[Validators.required]),
+  constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute) {
+
+  }
+
+  loginForm = new FormGroup({
+    email: new FormControl(null, [Validators.required]),
     password: new FormControl(''),
   });
-   
-   ngOnInit(){
-    
-  }
 
   get f() { 
     return this.loginForm.controls; 
@@ -38,22 +29,19 @@ export class LoginComponent implements OnInit{
   onLogin() {
     this.submitted = true;
     if (this.loginForm.invalid) {
-     return;
-  }
-    this.authService.login(this.f.email.value, this.f.password.value)
-    .pipe(first())
-    .subscribe(
-      result=> {
-        console.log(result);
-        this.router.navigate(['/dmaic']);
-      }
-      
-      
-    );
-    
- }
+      return;
+    }
+    this.authService.login(this.loginForm.value.email, this.loginForm.value.password)
+      .pipe(first())
+      .subscribe(
+        result => {
+          this.router.navigate(['/dmaic']);
+        }
+      );
 
- 
- 
- }
+  }
+
+
+
+}
 

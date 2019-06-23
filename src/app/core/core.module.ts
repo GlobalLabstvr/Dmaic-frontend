@@ -7,14 +7,15 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
 import { UserListModule } from '../user-list/user-list.module';
+import { CommonModule } from '@angular/common';  
 
 @NgModule({
     declarations: [HomeComponent, FooterComponent, HeaderComponent],
     imports: [
         RouterModule,
         SharedModule,
-        UserListModule
-              
+        UserListModule,
+        CommonModule
     ],
     exports:[HeaderComponent, FooterComponent,HomeComponent],
  providers: []
