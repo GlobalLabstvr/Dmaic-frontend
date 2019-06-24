@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserlistService } from '../shared/services/userlist.service';
 import { User } from '../shared/model/user.model';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -9,14 +10,15 @@ import { User } from '../shared/model/user.model';
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
-public users:User[]=[];
+public users:User[] = [];
   
-  constructor(private userlistService: UserlistService) { }
+  constructor(private userlistService: UserlistService, private http:HttpClient) { }
   
     ngOnInit(): void{
     this.userlistService.getUsers()
     .subscribe(res => {
       this.users = res;
+      this.userlistService.setResult(this.users);
       console.log(JSON.stringify(res));
     });
    
