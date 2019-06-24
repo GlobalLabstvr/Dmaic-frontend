@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserlistService } from '../shared/services/userlist.service';
 import { User } from '../shared/model/user.model';
-import { MatTableDataSource } from '@angular/material';
+
 
 @Component({
   selector: 'app-user-list',

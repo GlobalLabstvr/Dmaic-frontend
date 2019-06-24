@@ -1,16 +1,11 @@
-  <!---<textarea name="control" 
-placeholder="control" 
-rows="6" 
-cols="100" 
-style="font-size:15px;"
-[(ngModel)] = "dmaic.control"
->
-{{dmaic.control}}
-</textarea>-->
-<mat-card>
-    <textarea name="implementation" placeholder="implementation" rows="6" cols="21" [(ngModel)]="dmaic.implementation"
-    style="font-size:15px;">{{dmaic.implementation}}</textarea> &nbsp;&nbsp;&nbsp;&nbsp;
+<table>
+  <tr>
+    <mat-label style="font-size:40px; margin-bottom: 200px; margin-left: 10%;"><b>CONTROL</b></mat-label>
+  </tr>
+</table>
+ <br><br>
+   <textarea name="implementation" placeholder="implementation" rows="8" cols="40" [(ngModel)]="dmaic.implementation"
+    style="font-size:15px; margin-left: 10%;">{{dmaic.implementation}}</textarea> &nbsp;&nbsp;&nbsp;&nbsp;
 
-    <textarea name="control" placeholder="control" rows="6" cols="21" [(ngModel)]="dmaic.control"
+    <textarea name="control" placeholder="control" rows="8" cols="40" [(ngModel)]="dmaic.control"
         style="font-size:15px;">{{dmaic.control}}</textarea>
-</mat-card>

@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  private loginUser = '';
+  public loginUser = '';
   constructor(private authService:AuthService) { }
 
 

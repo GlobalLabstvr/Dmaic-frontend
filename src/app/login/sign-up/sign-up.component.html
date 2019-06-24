@@ -2,9 +2,7 @@
   <table> <tr> <mat-label style="font-size:40px; margin-bottom: 20px"><b>REGISTER</b></mat-label></tr>
     </table>
 
- 
-
-  <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
+   <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
     <mat-form-field>
          
       <input type="text" formControlName="firstName" matInput placeholder="First Name">
@@ -33,11 +31,7 @@
 
   <mat-form-field>
     <input type="text" formControlName="password"  matInput placeholder="Password">
-    <!----<mat-icon matSuffix (click)="hide = !hide">
-      {{hide ? 'visibility' : 'visibility_off'}}
-    </mat-icon>--->
     <span  *ngIf="!signupForm.get('password').valid && signupForm.get('password').touched" class="helpblock">This field is required!</span>
-
   </mat-form-field>
 
   <mat-card-actions>

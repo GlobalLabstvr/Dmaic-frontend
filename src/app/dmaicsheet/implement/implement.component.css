@@ -1,12 +1,5 @@
-mat-card{
-    padding-left: 50px;
-     width:700px;
-}
  mat-label{
     font-size:15px; 
     margin-bottom: 100px;
  }
- mat-expansion-panel{
-  height:20px; 
-   width:700px;
- }
+ 

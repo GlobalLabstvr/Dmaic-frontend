@@ -1,13 +1,10 @@
-<!--<textarea name="implement" placeholder="implement" 
-rows="6" cols="100" style="font-size:15px;" [(ngModel)]="dmaic.implementation">
+<table>
+    <tr>
+      <mat-label style="font-size:40px; margin-bottom: 200px,padding-right=50px; margin-left: 10%;"><b>IMPLEMENT</b></mat-label>
+    </tr><br><br>
+  </table>
+        <textarea name="analyse" placeholder="analyse" rows="8" cols="40" [(ngModel)]="dmaic.analyse"
+        style="font-size:15px; margin-left: 10%;">{{dmaic.analyse}}</textarea> &nbsp;&nbsp;&nbsp;&nbsp;
 
-{{dmaic.implementation}}
-</textarea>-->
-
-<mat-card>
-        <textarea name="analyse" placeholder="analyse" rows="6" cols="21" [(ngModel)]="dmaic.analyse"
-        style="font-size:15px;">{{dmaic.analyse}}</textarea> &nbsp;&nbsp;&nbsp;&nbsp;
-
-    <textarea name="implementation" placeholder="implementation" rows="6" cols="21" [(ngModel)]="dmaic.implementation"
-        style="font-size:15px;">{{dmaic.implementation}}</textarea>
-</mat-card>
+    <textarea name="implementation" placeholder="implementation" rows="8" cols="40" [(ngModel)]="dmaic.implementation"
+        style="font-size:15px; margin-left: 10%;">{{dmaic.implementation}}</textarea>
