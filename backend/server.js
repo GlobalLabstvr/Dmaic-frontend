@@ -12,9 +12,8 @@ const dmaicRoutes = require("./routes/dmaic");
 
 
 const app = express();
-mongoose.connect('mongodb://localhost:27017/created');
-//mongoose.connect("mongodb+srv://priyasha:cMvuH0VMZrZEdLyz@cluster0-thfuj.gcp.mongodb.net/dmaicappdb?retryWrites=true&w=majority",
-//{useNewUrlParser: true, dbName: 'dmaicappdb'});
+//mongoose.connect('mongodb://localhost:27017/created');
+mongoose.connect('mongodb+srv://suji:gTacQ5Be5lz9JATS@cluster0-ztto0.mongodb.net/test?retryWrites=true&w=majority');
 mongoose.connection.on("connected",()=>{
     console.log("mongodb connected");
 
@@ -50,7 +49,7 @@ app.use("/api/dmaic",dmaicRoutes);
 
 const PORT = 3000;
  app.listen(3000,()=>{
-console.log("server satrted port:"+PORT);
+console.log("server started port:"+PORT);
  })
 
 module.exports = app;

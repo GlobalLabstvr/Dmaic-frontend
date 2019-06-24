@@ -12,11 +12,16 @@ import { User } from '../model/user.model';
 
 export class UserlistService {
  
-  public users: Array<User> = [];
+  //public users: Array<User> = [];
+  public users: any;
   constructor(private http: HttpClient,private router: Router) {}
     
-getUsers():Observable<User[]> {
-  return this.http.get<User[]>('http://localhost:3000/api/user')
+//getUsers():Observable<User[]> {
+  //return this.http.get<User[]>('http://localhost:3000/api/user')
+//}
+
+getUsers() {
+  return this.http.get('http://localhost:3000/api/user');
 }
 
 getUser(id: string) {
@@ -25,12 +30,9 @@ getUser(id: string) {
   );
 }
 
-setResult(res: User[]){
+setResult(res: any){
   this.users = res;
 }
-
-  
- 
 
 }
 

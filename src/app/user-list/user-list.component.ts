@@ -10,8 +10,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
-public users:User[] = [];
-  
+//public users:User[] = [];
+  public users: any;
   constructor(private userlistService: UserlistService, private http:HttpClient) { }
   
     ngOnInit(): void{
