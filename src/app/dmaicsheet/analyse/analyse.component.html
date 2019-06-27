@@ -6,16 +6,8 @@
 <br>
 <br>
 
-<div class="row">
-  <div class="col-sm-6">
-    <textarea rows="8" cols="40" maxheight="500" maxlength="50"
-      style="font-size:15px;">{{dmaic.measure.target - dmaic.measure.current}}</textarea>
-  </div>
+    <textarea rows="6" cols="21"style="font-size:15px; margin-left: 5%">{{dmaic.measure.target - dmaic.measure.current}}</textarea> &nbsp;&nbsp;&nbsp;&nbsp;
+  
+    <textarea placeholder="Reason" rows="7" cols="32" [(ngModel)]="dmaic.analyse" style="font-size:15px; margin-left: 5%">{{dmaic.analyse}}</textarea>
+  
 
-  <div class="col-sm-6">
-    <textarea placeholder="Reason" rows="8" cols="40" maxheight="500" maxlength="50" [(ngModel)]="dmaic.analyse"
-      style="font-size:15px;">{{dmaic.analyse}}</textarea>
-  </div>
-
- 
-</div>
