@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../shared/auth/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
+import { AlertService } from '../shared/services/alert.service';
+
 
 
 @Component({
@@ -13,7 +15,8 @@ import { first } from 'rxjs/operators';
 export class LoginComponent {
 
   submitted = false;
-  constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute) {
+  constructor(private authService: AuthService, private router: Router, 
+    private route: ActivatedRoute, private alertService: AlertService) {
 
   }
 
@@ -31,13 +34,20 @@ export class LoginComponent {
     if (this.loginForm.invalid) {
       return;
     }
-    this.authService.login(this.loginForm.value.email, this.loginForm.value.password)
+    
+    this.authService.login(this.f.email.value, this.f.password.value)
       .pipe(first())
       .subscribe(
         result => {
           this.router.navigate(['/dmaic']);
-        }
-      );
+        },
+        error => {
+          alert("Username or password is incorrect");
+          console.log(error, { message: 'Username or password is incorrect' } );
+          this.alertService.error(error);
+         } );
+
+        
 
   }
 

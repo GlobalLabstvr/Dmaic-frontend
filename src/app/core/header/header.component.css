@@ -1,19 +1,7 @@
-/*.navbar{
-    background-color:gray;
-    height: 10%;
-    width: 100%;
- }*/
 
-/*.navbar-nav {
-    padding-left: 130px;
-    background-color:pink; 
-
-    padding-right: 20px;
-    
-}*/
 .container-fluid {
-padding-left: 80%;
-background-color:darkgray;
-height: 10%;
+padding-left: 60%;
+background-color: peachpuff;
+height: 13%;
 
 }

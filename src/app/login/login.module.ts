@@ -7,9 +7,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginRoutingModule } from './login-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { CommonMaterialModule } from '../shared/common-material/common-material.module';
+import { AlertComponent } from './alert/alert.component';
+import { AuthService } from '../shared/auth/auth.service';
+import { AlertService } from '../shared/services/alert.service';
 
 @NgModule({
-  declarations: [LoginComponent, SignUpComponent],
+  declarations: [LoginComponent, SignUpComponent, AlertComponent],
   imports: [
     CommonModule,
     CommonMaterialModule,
@@ -19,6 +22,7 @@ import { CommonMaterialModule } from '../shared/common-material/common-material.
     SharedModule,
     LoginRoutingModule,
    ],
-  exports:[LoginComponent, SignUpComponent]
+   providers:[AuthService, AlertService],
+  exports:[LoginComponent, SignUpComponent, AlertComponent]
 })
 export class LoginModule { }

@@ -10,11 +10,13 @@ import { LoginModule } from './login/login.module';
 import { UserListModule } from './user-list/user-list.module';
 import { SharedModule } from './shared/shared.module';
 import { DmaicModule } from './dmaic/dmaic.module';
-import { CommonModule } from '@angular/common';  
+import { CommonModule } from '@angular/common';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    
   ],
   imports: [
     BrowserModule,

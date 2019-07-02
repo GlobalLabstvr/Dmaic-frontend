@@ -41,6 +41,7 @@ router.post("/login", (req, res, next) => {
           message: "Auth failed"
         });
       }
+      
       fetchedUser = user;
       return bcrypt.compare(req.body.password, user.password);
     })
